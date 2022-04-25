@@ -1,24 +1,22 @@
 
-
-# for speech-to-text
 import speech_recognition as sr
 
-# for text-to-speech
+
 from gtts import gTTS
 
-# for language model
+
 import transformers
 
 import os
 import time
 
-# for data
+
 import os
 import datetime
 import numpy as np
 
 
-# Building the AI
+
 class ChatBot():
     def __init__(self, name):
         print("----- Starting up", name, "-----")
@@ -61,7 +59,6 @@ class ChatBot():
         return datetime.datetime.now().time().strftime('%H:%M')
 
 
-# Running the AI
 if __name__ == "__main__":
     
     ai = ChatBot(name="dev")
@@ -72,15 +69,15 @@ if __name__ == "__main__":
     while ex:
         ai.speech_to_text()
 
-        ## wake up
+        
         if ai.wake_up(ai.text) is True:
             res = "Hello I am Dave the AI, what can I do for you?"
         
-        ## action time
+      
         elif "time" in ai.text:
             res = ai.action_time()
         
-        ## respond politely
+        
         elif any(i in ai.text for i in ["thank","thanks"]):
             res = np.random.choice(["you're welcome!","anytime!","no problem!","cool!","I'm here if you need me!","mention not"])
         
@@ -88,7 +85,7 @@ if __name__ == "__main__":
             res = np.random.choice(["Tata","Have a good day","Bye","Goodbye","Hope to meet soon","peace out!"])
             
             ex=False
-        ## conversation
+       
         else:   
             if ai.text=="ERROR":
                 res="Sorry, come again?"
